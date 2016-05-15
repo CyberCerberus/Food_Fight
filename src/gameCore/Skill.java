@@ -62,4 +62,7 @@ public class Skill {
         return name;
     }
     
+    public int getRaw(){//Added to use in monster class.
+    	return this.raw;
+    }
 }
