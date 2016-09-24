@@ -1,12 +1,15 @@
 package gameCore;
 public class Action implements Comparable<Action> {
 	
-	private Character[] recievers;
+    private Character[] recievers;
     private Character user;
     private String flavtext;
     private int raw, time;
     private double skillcharge, strChange, defChange, spdChange;
     private boolean revive;
+    private int userIndex;
+    private boolean friend;
+    private boolean hostile;
     
     /* flavor text is something that can be printed out as the action is taken 
      * can contain the using charicter's name (e.g. "Hero Stabbed Monster")
@@ -60,8 +63,9 @@ public class Action implements Comparable<Action> {
         return user.getSpd();
     }
     
+    @Override
     public int compareTo(Action that) {
-        return this.getSpeed() - that.getSpeed();
+        return that.getSpeed() - this.getSpeed();
     }
     
     //if user died does nothing
@@ -77,5 +81,26 @@ public class Action implements Comparable<Action> {
         	System.out.println(user + " is defeated and can not act");
         }
     }
+    
+    public int getUser(){
+	return userIndex;
+    }
+    
+    public boolean friend(){
+	return friend;
+    }
+    
+    public boolean hostile(){
+	return hostile;
+    }
+    
+    public void setUserIndex(int i, boolean friend, boolean hostile){
+	userIndex = i;
+	this.friend = friend;
+	this.hostile = hostile;
+    }
+    
+    
+    
     
 }
